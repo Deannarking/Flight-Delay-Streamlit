@@ -10,7 +10,7 @@ st.markdown("**Analytical Question:** Which airlines and airports have the worst
 @st.cache_data
 def load_data():
     # Load sample data (Excel file)
-    df = pd.read_excel("Sample_flights.csv.xlsx", sheet_name="Sample_flights")
+    df = pd.read_excel("Sample_flights.csv", sheet_name="Sample_flights")
     
     # Load lookup tables
     airlines = pd.read_csv("airlines.csv")
@@ -33,7 +33,7 @@ def load_data():
 df, airports = load_data()
 
 # ====================== SIDEBAR FILTERS ======================
-st.sidebar.header("🔎 Filters")
+st.sidebar.header("Filters")
 
 selected_airlines = st.sidebar.multiselect(
     "Select Airlines",
@@ -54,7 +54,7 @@ df_filtered = df[
 ]
 
 # ====================== KPIs ======================
-st.header("📊 Key Performance Indicators")
+st.header("Key Performance Indicators")
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -70,7 +70,7 @@ col3.metric("Avg Arrival Delay", f"{avg_delay:.1f} min")
 col4.metric("Cancellation Rate", f"{cancel_rate:.2f}%")
 
 # ====================== VISUALIZATIONS ======================
-st.header("📈 Visualizations")
+st.header("Visualizations")
 
 col_v1, col_v2 = st.columns(2)
 
@@ -111,7 +111,7 @@ fig4 = px.pie(causes, names='Cause', values='Average Minutes',
 st.plotly_chart(fig4, use_container_width=True)
 
 # ====================== KEY FINDINGS ======================
-st.header("🔑 Key Findings")
+st.header("Key Findings")
 st.markdown("""
 - **Airline Performance**: Low-cost carriers like Spirit (NK) and Frontier (F9) tend to have higher average delays compared to major carriers like Delta and Alaska.
 - **Seasonality**: Delays are generally higher in certain months (you will see this clearly in the line chart after filtering).
@@ -119,12 +119,12 @@ st.markdown("""
 """)
 
 # ====================== RAW DATA & DOWNLOAD ======================
-st.header("📋 Filtered Raw Data")
+st.header("Filtered Raw Data")
 st.dataframe(df_filtered.head(1000))
 
 csv = df_filtered.to_csv(index=False).encode('utf-8')
 st.download_button(
-    label="📥 Download Filtered Data as CSV",
+    label="Download Filtered Data as CSV",
     data=csv,
     file_name="filtered_flight_delays.csv",
     mime="text/csv"
