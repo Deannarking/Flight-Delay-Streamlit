@@ -10,7 +10,7 @@ st.markdown("**Analytical Question:** Which airlines and airports have the worst
 @st.cache_data
 def load_data():
     # Load sample data (CSV)
-    df = pd.read_csv("Sample_flights.csv", sheet_name="Sample_flights")
+    df = pd.read_csv("Sample_flights.csv")
     
     # Load lookup tables
     airlines = pd.read_csv("airlines.csv")
