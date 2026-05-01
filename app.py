@@ -3,14 +3,14 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(page_title="2015 US Flight Delays Dashboard", layout="wide")
-st.title("🛫 2015 US Flight Delays & Cancellations Analytics")
+st.title("2015 US Flight Delays & Cancellations Analytics")
 st.markdown("**Analytical Question:** Which airlines and airports have the worst delays and cancellations, what causes them, and how do patterns vary by month?")
 
 # ====================== DATA LOADING ======================
 @st.cache_data
 def load_data():
-    # Load sample data (Excel file)
-    df = pd.read_excel("Sample_flights.csv", sheet_name="Sample_flights")
+    # Load sample data (CSV)
+    df = pd.read_csv("Sample_flights.csv", sheet_name="Sample_flights")
     
     # Load lookup tables
     airlines = pd.read_csv("airlines.csv")
